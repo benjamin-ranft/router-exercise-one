@@ -7,6 +7,7 @@ import Search from "./components/Search";
 import useSearch from "./hooks/useSearch";
 import {BrowserRouter as Router, Link, Switch, Route} from "react-router-dom";
 import Confirmation from "./components/Confirmation";
+import Home from "./components/Home";
 
 export default function App() {
     const [todos, create, remove, advance] = useTodos();
@@ -27,6 +28,12 @@ export default function App() {
             </Header>
             <Board>
                 <Switch>
+                    <Route exact path={["/","/home"]}>
+                        <Home
+                        todos={filteredTodos}
+                        onAdvance={advance}
+                        />
+                    </Route>
                     <Route exact path="/open">
                         <h2>Open ToDos</h2>
                         <TodoList

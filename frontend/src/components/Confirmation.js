@@ -3,15 +3,13 @@ import {useHistory, useParams} from "react-router-dom";
 
 export default function Confirmation({onDelete}){
 
+    const {id} = useParams()
     const history = useHistory();
 
     function handleClick(id) {
         onDelete(id);
-        history.push("/open");
+        history.push("/");
     }
-
-    const {id} = useParams()
-
 
 return(
     <>
