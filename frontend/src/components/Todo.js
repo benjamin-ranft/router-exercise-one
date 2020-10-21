@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link, Redirect, Route, Switch, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 export default function Todo({ id, status, description, onAdvance }) {
 
     const history = useHistory();
 
     function handleClick() {
-        history.push("/confirmation/"+ id);
+        history.push("/confirmation/"+ id +"/" +status);
     }
 
     return (

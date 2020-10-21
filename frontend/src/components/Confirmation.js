@@ -8,7 +8,7 @@ export default function Confirmation({onDelete}){
 
     function handleClick(id) {
         onDelete(id);
-        history.push("/");
+        history.goBack();
     }
 
 return(

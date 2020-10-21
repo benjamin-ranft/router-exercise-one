@@ -17,16 +17,17 @@ export default function App() {
         <Router>
         <Main>
             <nav>
-                <Link to= "/open">Open</Link>
-                <Link to = "/in_progress">In Progress</Link>
-                <Link to = "/done">Done</Link>
+                <Link className="FancyLink" to= "/">Home</Link>
+                <Link className="FancyLink" to= "/open">Open</Link>
+                <Link className="FancyLink" to = "/in_progress">In Progress</Link>
+                <Link className="FancyLink" to = "/done">Done</Link>
             </nav>
             <Header>
                 <h1>Super Kanban Board </h1>
                 <AddTodo onAdd={create} />
                 <Search search={search} onChange={setSearch}/>
             </Header>
-            <Board>
+            <section>
                 <Switch>
                     <Route exact path={["/","/home"]}>
                         <Home
@@ -34,7 +35,9 @@ export default function App() {
                         onAdvance={advance}
                         />
                     </Route>
+                    <StyledLists>
                     <Route exact path="/open">
+
                         <h2>Open ToDos</h2>
                         <TodoList
                             status="OPEN"
@@ -58,11 +61,12 @@ export default function App() {
                             onAdvance={advance}
                         />
                     </Route>
-                    <Route path="/confirmation/:id">
+                    </StyledLists>
+                    <Route path="/confirmation/:id/:status">
                         <Confirmation onDelete={remove}/>
                     </Route>
                 </Switch>
-            </Board>
+            </section>
         </Main>
         </Router>
     );
@@ -82,10 +86,25 @@ const Main = styled.main`
     h1 {
         color: hotpink;
     }
+    
+    nav{
+    margin-top: 20px;
+    }
+    
+    .FancyLink{
+    margin: 20px;
+    background-color: white;
+    border-radius: 10px;
+    color: darkred;
+    font-style: normal;
+    font-weight: bold;
+    padding: 15px;
+    }
 `;
 
-const Board = styled.section`
+const StyledLists = styled.section`
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 24px;
 `;
+
