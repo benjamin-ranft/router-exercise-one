@@ -1,7 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Link, Redirect, Route, Switch, useHistory} from "react-router-dom";
 
-export default function Todo({ id, status, description, onDelete, onAdvance }) {
+export default function Todo({ id, status, description, onAdvance }) {
+
+    const history = useHistory();
+
+    function handleClick() {
+        history.push("/confirmation/"+ id);
+    }
+
     return (
         <StyledTodo>
             <h3>
@@ -15,11 +23,12 @@ export default function Todo({ id, status, description, onDelete, onAdvance }) {
                         Advance
                     </button>
                 )}
-                <button onClick={() => onDelete(id)}>Delete</button>
+                <button onClick={handleClick} >Delete</button>
             </ButtonGroup>
         </StyledTodo>
     );
 }
+
 
 const StyledTodo = styled.section`
     padding: 8px;
