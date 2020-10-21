@@ -1,5 +1,6 @@
 import React from "react";
 import {useHistory, useParams} from "react-router-dom";
+import {Button, Typography} from '@material-ui/core';
 
 export default function Confirmation({onDelete}){
 
@@ -13,8 +14,8 @@ export default function Confirmation({onDelete}){
 
 return(
     <>
-        <h2>DANGER - Do you really want to delete your task? - DANGER</h2>
-        <button onClick={() => handleClick(id)}>Confirm</button>
+        <Typography variant="h2">DANGER - Do you really want to delete your task? - DANGER</Typography>
+        <Button onClick={() => handleClick(id)}>Confirm</Button>
     </>
 )
 
